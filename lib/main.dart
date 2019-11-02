@@ -44,6 +44,33 @@ void main(){
       slider
   );
 
+  final cartWidget = Container(
+    height: 60,
+    width: 60,
+    decoration: BoxDecoration(
+      border: Border.all(
+        color: Colors.white,
+      ),
+      color: Color(0x80000000),
+      borderRadius: BorderRadius.all(Radius.circular(30)),
+    ),
+    child: Icon(Icons.shopping_cart,
+      color: Colors.yellow,
+      size: 35,
+    ),
+  );
+
+//  final stackWidget = Stack(
+//    children: <Widget>[
+//      Positioned(
+//        child: cartWidget,
+//        right: 20,
+//        top: 40,
+//      )
+//    ],
+//
+//  );
+
   final underSlideWidget = Container(
     margin: EdgeInsets.all(10),
     child: Column(
@@ -56,15 +83,26 @@ void main(){
     ),
   );
 
-  final bodyWidget = Column(
+  final bodyWidget = ListView(
     children: <Widget>[
       CarouselPage(children: newSlider,),
+//      stackWidget,
+//      CarouselPage(children: newSlider,),
 //      sliderContainerWidget,
       underSlideWidget,
     ],
   );
 
-  final homeScreenWidget = Scaffold(body: bodyWidget,);
+  final homeScreenWidget = Stack(
+    children: <Widget>[
+      Scaffold(body: bodyWidget,),
+      Positioned(
+        child: cartWidget,
+        right: 10,
+        top: 50,
+      )
+    ],
+  );
   final phoneApp = MaterialApp(home: homeScreenWidget,);
   runApp(phoneApp);
 
@@ -142,9 +180,8 @@ class CarouselPage extends StatelessWidget{
   Widget build(BuildContext context) {
     return SizedBox(
       width: 400,
-      height: 400,
+      height: 300,
       child: Carousel(
-
         autoplay: false,
         borderRadius: true,
         boxFit: BoxFit.fill,
