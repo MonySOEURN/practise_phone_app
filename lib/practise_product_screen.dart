@@ -7,10 +7,10 @@ class PractiseProductScreen extends StatelessWidget{
 
 
 
-    final categories = ['ទាំងអស់','សៀវភៅសដដសថ','សម្ភារះផ្ទះបាយ','អេឡិតត្រូនិច','គ្រឿងសម្អាង'];
+    final categories = ['ទាំងអស់','សៀវភៅ','សម្ភារះផ្ទះបាយ','អេឡិតត្រូនិច','គ្រឿងសម្អាង'];
     final products = [
       Product(1, 'Iphone Xs Max', 'assets/iphone_xs_max.jpg', 1280),
-      Product(2, 'Iphone Xs Max12', 'assets/iphone_xs_max.jpg', 1280),
+      Product(2, 'Iphone Xs Max', 'assets/iphone_xs_max.jpg', 1280),
       Product(3, 'Iphone Xs Max', 'assets/iphone_xs_max.jpg', 1280),
       Product(4, 'Iphone Xs Max', 'assets/iphone_xs_max.jpg', 1280),
       Product(5, 'Iphone Xs Max', 'assets/iphone_xs_max.jpg', 1280),

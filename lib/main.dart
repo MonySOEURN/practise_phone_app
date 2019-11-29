@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phone_app/main_screen.dart';
 import 'package:phone_app/practice_register_screen.dart';
 import 'package:phone_app/practise_product_screen.dart';
 
@@ -7,8 +8,9 @@ import 'package:phone_app/practise_product_screen.dart';
  */
 void main(){
 
+  final phoneApp = MaterialApp(home: MainScreen(),);
 //  final phoneApp = MaterialApp(home: PractiseProductScreen(),);
-  final phoneApp = MaterialApp(home: PracticeRegisterScreen(),);
+//  final phoneApp = MaterialApp(home: PracticeRegisterScreen(),);
   runApp(phoneApp);
 
 }

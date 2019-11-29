@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:phone_app/Product.dart';
+import 'package:phone_app/product_detail_screen.dart';
 
 class HomeScreen extends StatelessWidget{
   @override
@@ -106,14 +107,6 @@ class HomeScreen extends StatelessWidget{
 
   Widget buildItemListView(name){
     
-    final products = [
-      Product(1, 'iphone 1', 'https://cdn.pixabay.com/photo/2018/05/28/22/11/message-in-a-bottle-3437294_1280.jpg', 1233),
-      Product(2, 'iphone 2', 'https://cdn.pixabay.com/photo/2018/05/28/22/11/message-in-a-bottle-3437294_1280.jpg', 1233),
-      Product(3, 'iphone 3', 'https://cdn.pixabay.com/photo/2018/05/28/22/11/message-in-a-bottle-3437294_1280.jpg', 1233),
-      Product(4, 'iphone 4', 'https://cdn.pixabay.com/photo/2018/05/28/22/11/message-in-a-bottle-3437294_1280.jpg', 1233),
-      Product(5, 'iphone 5', 'https://cdn.pixabay.com/photo/2018/05/28/22/11/message-in-a-bottle-3437294_1280.jpg', 1233),
-    ];
-    
     return Container(
       margin: EdgeInsets.all(8),
       width: 100,
@@ -124,20 +117,55 @@ class HomeScreen extends StatelessWidget{
         ),
       ),
       child: Center(
-        child: Text(name),
+        child: Padding(
+          padding: EdgeInsets.only(left: 8),
+          child: Text(name),
+        ),
       ),
     );
   }
 
   Widget buildingItemCategoryList(name){
 
+    final products = [
+      Product(1, 'iphone 1', 'assets/iphone_xs_max.jpg', 1233),
+      Product(2, 'iphone 2', 'assets/iphone_xs_max.jpg', 1233),
+      Product(3, 'iphone 3', 'assets/iphone_xs_max.jpg', 1233),
+      Product(4, 'iphone 4', 'assets/iphone_xs_max.jpg', 1233),
+      Product(5, 'iphone 5', 'assets/iphone_xs_max.jpg', 1233),
+    ];
+
     final phoneDataWidget = Container(
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: products.length,
+        itemBuilder: (context, index){
+          return GestureDetector(
+            onTap: (){
+//              print(products[index].name);
+              showProductDetail(products[index], context);
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Image.asset(products[index].imageUrl, width: 100, height: 100,),
+                  Text(products[index].name),
+                  Text('${products[index].price}')
+                ],
+              ),
+            ),
+          );
+        },
+      ),
       margin: EdgeInsets.only(top: 5),
-      height: 90,
+      height: 145,
 //    color: Colors.red,
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.all(Radius.circular(5))
+//          border: Border.all(color: Colors.red),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+          color: Color(0xcdde90)
       ),
     );
 
@@ -154,7 +182,7 @@ class HomeScreen extends StatelessWidget{
     );
 
     return Container(
-      height: 140,
+      height: 180,
       child: Column(
         children: <Widget>[
           firstPhoneRowLable,
@@ -175,6 +203,16 @@ class HomeScreen extends StatelessWidget{
           )
       ),
     );
+  }
+
+  void showProductDetail(Product product,BuildContext context){
+    print(product.name);
+    final route = MaterialPageRoute(
+      builder: (context){
+        return ProductDetail(product);
+      }
+    );
+    Navigator.of(context).push(route);
   }
 
 
