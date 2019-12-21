@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phone_app/SurveyScreen.dart';
 import 'package:phone_app/categories_screen.dart';
 import 'package:phone_app/home_screen.dart';
 import 'package:phone_app/practice_register_screen.dart';
@@ -48,6 +49,10 @@ class _State extends State<MainScreen>{
             title: Text("Search")
         ),
         BottomNavigationBarItem(
+            icon: Icon(Icons.question_answer),
+            title: Text("Survey")
+        ),
+        BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
             title: Text("Account")
         ),
@@ -75,6 +80,10 @@ class _State extends State<MainScreen>{
       case 2:
         {
           return SearchScreen();
+        }
+      case 3:
+        {
+          return SurveyScreen();
         }
       default:
         {
