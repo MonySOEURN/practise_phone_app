@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phone_app/categories_screen.dart';
 import 'package:phone_app/home_screen.dart';
 import 'package:phone_app/practice_register_screen.dart';
 import 'package:phone_app/practise_product_screen.dart';
@@ -69,7 +70,7 @@ class _State extends State<MainScreen>{
         }
       case 1:
         {
-          return PractiseProductScreen();
+          return Categories_Screen();
         }
       case 2:
         {
